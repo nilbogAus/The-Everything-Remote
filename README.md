@@ -2,6 +2,9 @@
 
 A simple universal remote designed for ESPHome - simple to assemble for beginners and experienced tinkerers alike! 
 
+[![Video](https://img.youtube.com/vi/Pe_ozZkrRAw/maxresdefault.jpg)](https://www.youtube.com/watch?v=Pe_ozZkrRAw)
+
+
 ## 📦 Features
 
 - 24 configurable buttons (single press + long press)
@@ -11,27 +14,22 @@ A simple universal remote designed for ESPHome - simple to assemble for beginner
 - Easy to build
 - 3D printable, customisable enclosure
 
-## Code
+---
+
+## YAML
 
 Looking for the YAML for your remote? Here you go!
 
 
-
 ## Hardware
 
-You can get all the printable files [over at Printables](https://www.printables.com/model/1281626-everything-remote-esp32-powered-universal-remote)
+[Printable Files](https://www.printables.com/model/1281626-everything-remote-esp32-powered-universal-remote)
 
-And the BOM is available here
-
----
-
-## Watch The Video
-
-[![Video](https://img.youtube.com/vi/Pe_ozZkrRAw/maxresdefault.jpg)](https://www.youtube.com/watch?v=Pe_ozZkrRAw)
+[Bill of Materials](https://github.com/TheStockPot/TheEverythingRemote/blob/main/Bill%20Of%20Materials.md)
 
 ---
 
-## Watch The Tutorial
+## Tutorial Video
 
 [![Video](https://img.youtube.com/vi/JU_7mb1ue7o/maxresdefault.jpg)](https://www.youtube.com/watch?v=JU_7mb1ue7o)
 
