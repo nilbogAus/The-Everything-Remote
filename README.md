@@ -1,8 +1,8 @@
 # The Everything Remote
 
-A smart universal remote powered by an ESP32 and ESPHome — no soldering, no coding required. Designed to control Home Assistant devices via button presses, The Everything Remote is easy to customize and extend for your own needs.
+A simple universal remote designed for ESPHome - simple to assemble for beginners and experienced tinkerers alike! 
 
-This repo contains the YAML configuration files for ESPHome.
+[![Everything Remote Video](https://img.youtube.com/vi/Pe_ozZkrRAw/0.jpg)](https://www.youtube.com/watch?v=Pe_ozZkrRAw)
 
 ---
 
