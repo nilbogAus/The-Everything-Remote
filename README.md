@@ -2,7 +2,7 @@
 
 A simple universal remote designed for ESPHome - simple to assemble for beginners and experienced tinkerers alike! 
 
-[![Everything Remote Video](https://img.youtube.com/vi/Pe_ozZkrRAw/0.jpg)](https://www.youtube.com/watch?v=Pe_ozZkrRAw)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Pe_ozZkrRAw?si=tF58U9hxBXpLBO2W" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
 
