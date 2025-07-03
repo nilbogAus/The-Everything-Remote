@@ -1,4 +1,4 @@
-# Everything Remote – Bill of MaterialsAdd commentMore actions
+# Everything Remote – Bill of Materials
 
 Everything you need to build **The Everything Remote**.
 
