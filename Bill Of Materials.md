@@ -17,6 +17,9 @@ Everything you need to build **The Everything Remote**.
 | M2 x 10mm cap head screws             | 2   | [AliExpress](https://www.aliexpress.com/item/1005006804849206.html) | Part of M2 screw assortments — handy to have.                                       |
 | M2 x 8mm cap head screws              | 3   | [AliExpress](https://www.aliexpress.com/item/1005007183008660.html) | Also from typical M2 screw kits.                                                    |
 
+> [!CAUTION]
+> Please ensure your chosen lithium cell is no thicker than 6mm. Thick cells could be punctured by the tactile button legs.
+
 ---
 
 ## 🛠 Tools
