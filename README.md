@@ -4,6 +4,9 @@ A simple universal remote designed for ESPHome - simple to assemble for beginner
 
 [![Video](https://img.youtube.com/vi/Pe_ozZkrRAw/maxresdefault.jpg)](https://www.youtube.com/watch?v=Pe_ozZkrRAw)
 
+> [!CAUTION]
+> If you're building your own Everything Remote, please ensure your chosen lithium cell is no thicker than 6mm. Thick cells could be punctured by the tactile button legs.
+
 
 ## 📦 Features
 
@@ -18,7 +21,8 @@ A simple universal remote designed for ESPHome - simple to assemble for beginner
 
 ## YAML
 
-Looking for the YAML for your remote? Here you go!
+[Looking for the YAML for your remote? Here you go!](https://github.com/TheStockPot/The-Everything-Remote/blob/main/ESPHome%20YAML%20-%20v2.1)
+
 
 
 ## Hardware
