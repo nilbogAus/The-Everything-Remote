@@ -31,6 +31,6 @@ packages:
     url: https://github.com/nilbogAus/The-Everything-Remote/
     path: YAML
     files: 
-      - path: ESPHome YAML - v3.0.YAML
+      - path: Remote-v3-0.yaml
     ref: main
     refresh: 5s
