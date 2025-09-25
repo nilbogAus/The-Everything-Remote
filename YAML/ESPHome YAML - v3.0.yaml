@@ -1,3 +1,4 @@
+
 globals:
   - id: last_active
     type: int
