@@ -1,0 +1,46 @@
+esphome:
+  name: everything_remote
+  friendly_name: Everything Remote
+  on_boot:
+    - priority: 250
+      then:
+        - lambda: |-
+            id(last_active) = millis() / 1000;
+            id(wake_button_processed) = false;
+
+            auto cause = esp_sleep_get_wakeup_cause();
+            if (cause == ESP_SLEEP_WAKEUP_EXT0) {
+              ESP_LOGI("main", "Device woke up by EXT0");
+            } else if (cause == ESP_SLEEP_WAKEUP_TIMER) {
+              ESP_LOGD("main", "Device woke up by timer.");
+            } else {
+              ESP_LOGD("main", "Device woke up by other cause: %d", cause);
+            }
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+
+logger:
+
+api:
+
+ota:
+  platform: esphome
+
+wifi:
+  ssid: "my_wifi"
+  password: "my_password"
+  fast_connect: true
+  power_save_mode: LIGHT
+  output_power: 10dB  # Reduce WiFi power if signal is strong enough
+
+packages:
+  remote_package_files:  
+    url: https://github.com/nilbogAus/The-Everything-Remote/
+    path: YAML
+    files: 
+      - path: ESPHome YAML - v3.0
+    ref: main
+    refresh: 5s
