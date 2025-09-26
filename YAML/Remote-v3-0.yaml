@@ -560,7 +560,7 @@ binary_sensor:
         then:
           - script.execute: reset_idle_timer
           - homeassistant.action:
-              action: media_player.turn_on
+              action: homeassistant.turn_on
               data:
                 entity_id: media_player.lg_webos_smart_tv
       - timing:
