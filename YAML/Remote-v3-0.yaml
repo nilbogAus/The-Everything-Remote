@@ -559,7 +559,7 @@ binary_sensor:
           - ON for at most 350ms
         then:
           - script.execute: reset_idle_timer
-          - media_player.turn_on: tv_on_button
+#          - media_player.turn_on: tv_on_button
       - timing:
           - ON for at least 500ms
         then:
