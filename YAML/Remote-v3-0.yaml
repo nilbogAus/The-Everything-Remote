@@ -425,7 +425,7 @@ binary_sensor:
       inverted: true
     name: "Shortcut 3"
     id: shortcut_3
-    internal: true
+    internal: false
     on_multi_click:
       - timing:
           - ON for at most 350ms
@@ -451,7 +451,7 @@ binary_sensor:
       inverted: true
     name: "Shortcut 4"
     id: shortcut_4
-    internal: true
+    internal: false
     on_multi_click:
       - timing:
           - ON for at most 350ms
@@ -477,7 +477,7 @@ binary_sensor:
       inverted: true
     name: "Brightness Down"
     id: brightness_down
-    internal: false 
+    internal: true 
     on_multi_click:
       - timing:
           - ON for at most 350ms
@@ -503,7 +503,7 @@ binary_sensor:
       inverted: true
     name: "Brightness Up"
     id: brightness_up
-    internal: false 
+    internal: true 
     on_multi_click:
       - timing:
           - ON for at most 350ms
@@ -528,7 +528,7 @@ binary_sensor:
       inverted: true
     name: "Shortcut 1"
     id: shortcut_1
-    internal: true
+    internal: false
     on_multi_click:
       - timing:
           - ON for at most 350ms
@@ -553,16 +553,18 @@ binary_sensor:
       inverted: true
     name: "Shortcut 2"
     id: shortcut_2
-    internal: true
+    internal: false
     on_multi_click:
       - timing:
           - ON for at most 350ms
         then:
+          - logger.log: "****************************************** 1"
           - script.execute: reset_idle_timer
           - homeassistant.action:
               action: homeassistant.turn_on
               data:
-                entity_id: media_player.lg_webos_smart_tv
+                entity_id: switch.sonoff_10001adcce
+          - logger.log: "****************************************** 2"
       - timing:
           - ON for at least 500ms
         then:
