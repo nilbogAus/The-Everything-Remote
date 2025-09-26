@@ -559,9 +559,7 @@ binary_sensor:
           - ON for at most 350ms
         then:
           - script.execute: reset_idle_timer
-          - homeassistant.event:
-              event: esphome.remote_button_pressed
-              data: {button: "shortcut_2", type: "single"}
+          - media_player.turn_on: tv_on_button
       - timing:
           - ON for at least 500ms
         then:

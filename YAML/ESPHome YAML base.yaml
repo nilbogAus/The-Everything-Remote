@@ -3,6 +3,10 @@ esphome:
   friendly_name: Remote Control
   min_version: 2025.9.0
   name_add_mac_suffix: false
+  project:
+    name: "nilbogAus.TheStockPot.The-Everything-Remote"
+    version: "3.0.0"
+
 
 esp32:
   variant: esp32
@@ -32,5 +36,6 @@ packages:
     path: YAML
     files: 
       - path: Remote-v3-0.yaml
+      - path: Devices.yaml
     ref: main
     refresh: 5s

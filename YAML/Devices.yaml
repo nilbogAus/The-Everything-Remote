@@ -1,0 +1,5 @@
+media_player:
+  - platform: homeassistant
+    entity_id: media_player.lg_webos_smart_tv
+    name: tv_on_button
+
