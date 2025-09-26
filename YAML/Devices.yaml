@@ -1,5 +1,9 @@
-media_player:
+
+
+sensor:
   - platform: homeassistant
+    id: tv_power
     entity_id: media_player.lg_webos_smart_tv
-    name: tv_on_button
+
+
 
