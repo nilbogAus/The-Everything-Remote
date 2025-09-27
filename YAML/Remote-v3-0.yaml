@@ -282,9 +282,9 @@ binary_sensor:
     internal: true
     on_click:
       - script.execute: reset_idle_timer
-      - while: # This loop will continue as long as the condition is true
+      - while: 
           condition:
-            binary_sensor.is_on: volume_up # Check if the button is still pressed
+            lambda: return (id(volume_up).state);
           then:
             # Actions to repeat while the button is pressed
             - homeassistant.event:
