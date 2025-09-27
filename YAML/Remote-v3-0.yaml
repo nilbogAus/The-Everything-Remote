@@ -19,7 +19,7 @@ interval:
           condition:
             - and:
               - binary_sensor.is_off: tv_power 
-              - binary_sensor.is_off: amp_power
+             # - binary_sensor.is_off: amp_power
           then:
             - logger.log: "Go to sleep"
             - script.execute: go_to_sleep
