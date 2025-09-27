@@ -12,7 +12,7 @@ deep_sleep:
     allow_other_uses: true
 
 interval:
-  - interval: 60s
+  - interval: 10s
     then:
       - logger.log: "interval"
       - if:
@@ -22,7 +22,6 @@ interval:
               - text_sensor.state:
                   id: amp_power
                   state: 'off'      
-             # - binary_sensor.is_off: amp_power
           then:
             - logger.log: "Go to sleep"
             #- script.execute: go_to_sleep
