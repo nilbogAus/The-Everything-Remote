@@ -64,6 +64,7 @@ binary_sensor:
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "power", type: "long"}
+          - deep_sleep.enter: deep_sleep_ctrl
             
 
   - platform: gpio
