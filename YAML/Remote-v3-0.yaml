@@ -20,8 +20,9 @@ deep_sleep:
     allow_other_uses: true
 
 interval:
-  - interval: 60s
+  - interval: 10s
     then:
+      - logger.log: "interval"
       - if:
           condition:
             # any:
