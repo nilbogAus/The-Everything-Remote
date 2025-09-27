@@ -287,9 +287,16 @@ binary_sensor:
           time_on: 400ms
     on_click:
       - script.execute: reset_idle_timer
-      - homeassistant.event:
-          event: esphome.remote_button_pressed
-          data: {button: "volume_up", type: "single"}
+      - while: # This loop will continue as long as the condition is true
+          condition:
+            binary_sensor.is_on: volume_up # Check if the button is still pressed
+          then:
+            # Actions to repeat while the button is pressed
+            - homeassistant.event:
+                event: esphome.remote_button_pressed
+                data: {button: "volume_up", type: "single"}
+            - delay: 250ms # Adjust the delay for desired repeat speed
+
 
   - platform: gpio
     pin:
