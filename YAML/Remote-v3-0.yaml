@@ -12,7 +12,7 @@ deep_sleep:
     allow_other_uses: true
 
 interval:
-  - interval: 10s
+  - interval: 60s
     then:
       - logger.log: "interval"
       - if:
@@ -24,7 +24,7 @@ interval:
                   state: 'off'      
           then:
             - logger.log: "Go to sleep"
-            #- script.execute: go_to_sleep
+            - script.execute: go_to_sleep
           else:
             - logger.log: "stay awake"
 
