@@ -12,8 +12,8 @@ deep_sleep:
     pins: 
       - 0
       - 34
-    mode: ANY_LOW
-#    inverted: true
+    mode: ALL_LOW
+    inverted: true
     allow_other_uses: true
 
 interval:
