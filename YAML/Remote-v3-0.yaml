@@ -21,7 +21,7 @@ interval:
               - binary_sensor.is_off: tv_power 
               - text_sensor.state:
                   id: amp_power
-                  state: 'Off'      
+                  state: 'off'      
              # - binary_sensor.is_off: amp_power
           then:
             - logger.log: "Go to sleep"
