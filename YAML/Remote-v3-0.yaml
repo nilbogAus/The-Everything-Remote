@@ -16,7 +16,7 @@ deep_sleep:
   sleep_duration: 2800 min
   wakeup_pin:
     number: GPIO0
-    inverted: true
+    #inverted: true
     allow_other_uses: true
 
 interval:
@@ -25,9 +25,7 @@ interval:
       - logger.log: "interval"
       - if:
           condition:
-            # any:
-              # - lambda: return (millis() / 1000) - id(last_active) >= 1200;
-            and:
+            - and:
               - binary_sensor.is_off: tv_power 
               - binary_sensor.is_off: amp_power
           then:
