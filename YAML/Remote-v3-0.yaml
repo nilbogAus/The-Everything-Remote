@@ -20,7 +20,7 @@ deep_sleep:
     allow_other_uses: true
 
 interval:
-  - interval: 10s
+  - interval: 60s
     then:
       - logger.log: "interval"
       - if:
@@ -32,8 +32,7 @@ interval:
                 - binary_sensor.is_off: amp_power
           then:
             - logger.log: "Gone to sleep"
-
-           # - deep_sleep.enter: deep_sleep_ctrl
+            - deep_sleep.enter: deep_sleep_ctrl
 
 # BUTTONS
 binary_sensor:
