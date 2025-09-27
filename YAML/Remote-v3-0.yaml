@@ -45,12 +45,22 @@ binary_sensor:
     name: "Power"
     id: power
     internal: true
-    on_press:
-      then:
-        - script.execute: reset_idle_timer
-        - homeassistant.event:
-            event: esphome.remote_button_pressed
-            data: {button: "power", type: "single"}
+    on_multi_click:
+      - timing:
+          - ON for at most 350ms
+        then:
+          - script.execute: reset_idle_timer
+          - homeassistant.event:
+              event: esphome.remote_button_pressed
+              data: {button: "power", type: "single"}
+      - timing:
+          - ON for at least 500ms
+        then:
+          - script.execute: reset_idle_timer
+          - homeassistant.event:
+              event: esphome.remote_button_pressed
+              data: {button: "power", type: "long"}
+            
 
   - platform: gpio
     pin:
