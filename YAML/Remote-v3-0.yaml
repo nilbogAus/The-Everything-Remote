@@ -13,8 +13,6 @@
 
 deep_sleep:
   id: deep_sleep_ctrl
-  sleep_duration: 
-    weeks: 52
   wakeup_pin:
     number: GPIO0
     inverted: true
