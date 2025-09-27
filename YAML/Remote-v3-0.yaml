@@ -27,12 +27,12 @@ interval:
   - interval: 60s
     then:
       - if:
-        condition:
-          # any:
-            # - lambda: return (millis() / 1000) - id(last_active) >= 1200;
-            - and:
-              - binary_sensor.is_off: tv_power 
-              - binary_sensor.is_off: amp_power
+          condition:
+            # any:
+              # - lambda: return (millis() / 1000) - id(last_active) >= 1200;
+              - and:
+                - binary_sensor.is_off: tv_power 
+                - binary_sensor.is_off: amp_power
         then:
           - deep_sleep.enter: deep_sleep_ctrl
 
