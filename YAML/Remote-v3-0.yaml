@@ -534,10 +534,7 @@ binary_sensor:
           - ON for at most 350ms
         then:
           - script.execute: reset_idle_timer
-          - homeassistant.action:
-              action: media_player.turn_off
-              data:
-                entity_id: media_player.lg_webos_smart_tv
+          - binary_sensor.turn_on: tv_power
       - timing:
           - ON for at least 500ms
         then:
@@ -571,3 +568,6 @@ binary_sensor:
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "shortcut_2", type: "long"}
+
+
+
