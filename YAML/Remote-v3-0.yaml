@@ -280,21 +280,16 @@ binary_sensor:
     name: "Volume Up"
     id: volume_up
     internal: true
-    on_multi_click:
-      - timing:
-          - ON for at most 350ms
-        then:
-          - script.execute: reset_idle_timer
-          - homeassistant.event:
-              event: esphome.remote_button_pressed
-              data: {button: "volume_up", type: "single"}
-      - timing:
-          - ON for at least 500ms
-        then:
-          - script.execute: reset_idle_timer
-          - homeassistant.event:
-              event: esphome.remote_button_pressed
-              data: {button: "volume_up", type: "long"}
+    filters:
+      - autorepeat:
+        - delay: 1s
+          time_off: 100ms
+          time_on: 400ms
+    on_click:
+      - script.execute: reset_idle_timer
+      - homeassistant.event:
+          event: esphome.remote_button_pressed
+          data: {button: "volume_up", type: "single"}
 
   - platform: gpio
     pin:
@@ -332,10 +327,7 @@ binary_sensor:
     name: "Channel Up"
     id: channel_up
     internal: true
-    on_multi_click:
-      - timing:
-          - ON for at most 350ms
-        then:
+    on_click:
           - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
