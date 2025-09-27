@@ -45,14 +45,12 @@ binary_sensor:
       - timing:
           - ON for at most 350ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "power", type: "single"}
       - timing:
           - ON for at least 500ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "power", type: "long"}
@@ -73,14 +71,12 @@ binary_sensor:
       - timing:
           - ON for at most 350ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "back", type: "single"}
       - timing:
           - ON for at least 500ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "back", type: "long"}
@@ -99,14 +95,12 @@ binary_sensor:
       - timing:
           - ON for at most 350ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "home", type: "single"}
       - timing:
           - ON for at least 500ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "home", type: "long"}
@@ -125,14 +119,12 @@ binary_sensor:
       - timing:
           - ON for at most 350ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "play_pause", type: "single"}
       - timing:
           - ON for at least 500ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "play_pause", type: "long"}
@@ -151,14 +143,12 @@ binary_sensor:
       - timing:
           - ON for at most 350ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "up", type: "single"}
       - timing:
           - ON for at least 500ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "up", type: "long"}
@@ -177,14 +167,12 @@ binary_sensor:
       - timing:
           - ON for at most 350ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "left", type: "single"}
       - timing:
           - ON for at least 500ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "left", type: "long"}
@@ -203,14 +191,12 @@ binary_sensor:
       - timing:
           - ON for at most 350ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "select_button", type: "single"}
       - timing:
           - ON for at least 500ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "select_button", type: "long"}
@@ -229,14 +215,12 @@ binary_sensor:
       - timing:
           - ON for at most 350ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "right", type: "single"}
       - timing:
           - ON for at least 500ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "right", type: "long"}
@@ -255,14 +239,12 @@ binary_sensor:
       - timing:
           - ON for at most 350ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "down", type: "single"}
       - timing:
           - ON for at least 500ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "down", type: "long"}
@@ -278,7 +260,6 @@ binary_sensor:
     id: volume_up
     internal: true
     on_state:
-      # - script.execute: reset_idle_timer
       - while: 
           condition:
             binary_sensor.is_on: volume_up 
@@ -302,14 +283,12 @@ binary_sensor:
       - timing:
           - ON for at most 350ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "mute", type: "single"}
       - timing:
           - ON for at least 500ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "mute", type: "long"}
@@ -328,14 +307,12 @@ binary_sensor:
       - timing:
           - ON for at most 350ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "channel_up", type: "single"}
       - timing:
           - ON for at least 500ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "channel_up", type: "long"}
@@ -351,7 +328,6 @@ binary_sensor:
     id: volume_down
     internal: true
     on_state:
-      # - script.execute: reset_idle_timer
       - while: 
           condition:
             binary_sensor.is_on: volume_down 
@@ -375,14 +351,12 @@ binary_sensor:
       - timing:
           - ON for at most 350ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "settings", type: "single"}
       - timing:
           - ON for at least 500ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "settings", type: "long"}
@@ -401,14 +375,12 @@ binary_sensor:
       - timing:
           - ON for at most 350ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "channel_down", type: "single"}
       - timing:
           - ON for at least 500ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "channel_down", type: "long"}
@@ -427,14 +399,12 @@ binary_sensor:
       - timing:
           - ON for at most 350ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "shortcut_3", type: "single"}
       - timing:
           - ON for at least 500ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "shortcut_3", type: "long"}
@@ -453,14 +423,12 @@ binary_sensor:
       - timing:
           - ON for at most 350ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "shortcut_4", type: "single"}
       - timing:
           - ON for at least 500ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "shortcut_4", type: "long"}
@@ -479,14 +447,12 @@ binary_sensor:
       - timing:
           - ON for at most 350ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "brightness_down", type: "single"}
       - timing:
           - ON for at least 500ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "brightness_down", type: "long"}
@@ -505,14 +471,12 @@ binary_sensor:
       - timing:
           - ON for at most 350ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "brightness_up", type: "single"}
       - timing:
           - ON for at least 500ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "brightness_up", type: "long"}
@@ -530,14 +494,12 @@ binary_sensor:
       - timing:
           - ON for at most 350ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "shortcut_1", type: "single"}
       - timing:
           - ON for at least 500ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "shortcut_1", type: "long"}
@@ -555,14 +517,12 @@ binary_sensor:
       - timing:
           - ON for at most 350ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "shortcut_2", type: "single"}
       - timing:
           - ON for at least 500ms
         then:
-          # - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "shortcut_2", type: "long"}
