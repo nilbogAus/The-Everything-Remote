@@ -1,13 +1,9 @@
 
-globals:
-  - id: last_active
-    type: int
-    restore_value: no
-    initial_value: '0'
-  - id: wake_button_processed
-    type: bool
-    restore_value: no
-    initial_value: 'false'
+# globals:
+#   - id: last_active
+#     type: int
+#     restore_value: no
+#     initial_value: '0'
 
 # script:
 #   - id: reset_idle_timer
