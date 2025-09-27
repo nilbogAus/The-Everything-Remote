@@ -280,7 +280,7 @@ binary_sensor:
     name: "Volume Up"
     id: volume_up
     internal: true
-    on_click:
+    on_state:
       - script.execute: reset_idle_timer
       - while: 
           condition:
