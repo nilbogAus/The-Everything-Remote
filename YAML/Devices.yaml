@@ -1,6 +1,6 @@
 
 
-binary_sensor:
+switch:
   - platform: homeassistant
     id: tv_power
     name: tv_power
