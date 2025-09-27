@@ -5,11 +5,11 @@
 #     restore_value: no
 #     initial_value: '0'
 
-# script:
-#   - id: reset_idle_timer
-#     then:
-#       - lambda: |-
-#           id(last_active) = millis() / 10000;
+script:
+  - id: go_to_sleep
+    then:
+      - delay: 20s  
+      - deep_sleep.enter: deep_sleep_ctrl
 
 deep_sleep:
   id: deep_sleep_ctrl
@@ -61,7 +61,7 @@ binary_sensor:
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "power", type: "long"}
-          - deep_sleep.enter: deep_sleep_ctrl
+          - script.execute: go_to_sleep
             
 
   - platform: gpio
