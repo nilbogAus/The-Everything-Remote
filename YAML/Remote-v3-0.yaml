@@ -284,9 +284,8 @@ binary_sensor:
       - script.execute: reset_idle_timer
       - while: 
           condition:
-            binary_sensor.is_on: volume_up # Check if the button is still pressed
+            binary_sensor.is_on: volume_up 
           then:
-            # Actions to repeat while the button is pressed
             - homeassistant.event:
                 event: esphome.remote_button_pressed
                 data: {button: "volume_up", type: "repeat"}
@@ -354,21 +353,16 @@ binary_sensor:
     name: "Volume Down"
     id: volume_down
     internal: true
-    on_multi_click:
-      - timing:
-          - ON for at most 350ms
-        then:
-          - script.execute: reset_idle_timer
-          - homeassistant.event:
-              event: esphome.remote_button_pressed
-              data: {button: "volume_down", type: "single"}
-      - timing:
-          - ON for at least 500ms
-        then:
-          - script.execute: reset_idle_timer
-          - homeassistant.event:
-              event: esphome.remote_button_pressed
-              data: {button: "volume_down", type: "long"}
+    on_state:
+      - script.execute: reset_idle_timer
+      - while: 
+          condition:
+            binary_sensor.is_on: volume_down 
+          then:
+            - homeassistant.event:
+                event: esphome.remote_button_pressed
+                data: {button: "volume_down", type: "repeat"}
+            - delay: 200ms # Adjust the delay for desired repeat speed
 
   - platform: gpio
     pin:
