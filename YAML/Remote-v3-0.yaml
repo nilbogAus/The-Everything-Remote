@@ -425,7 +425,7 @@ binary_sensor:
       inverted: true
     name: "Shortcut 3"
     id: shortcut_3
-    internal: false
+    internal: true
     on_multi_click:
       - timing:
           - ON for at most 350ms
@@ -451,7 +451,7 @@ binary_sensor:
       inverted: true
     name: "Shortcut 4"
     id: shortcut_4
-    internal: false
+    internal: true
     on_multi_click:
       - timing:
           - ON for at most 350ms
@@ -477,7 +477,7 @@ binary_sensor:
       inverted: true
     name: "Brightness Down"
     id: brightness_down
-    internal: true 
+    internal: false 
     on_multi_click:
       - timing:
           - ON for at most 350ms
@@ -503,7 +503,7 @@ binary_sensor:
       inverted: true
     name: "Brightness Up"
     id: brightness_up
-    internal: true 
+    internal: false 
     on_multi_click:
       - timing:
           - ON for at most 350ms
@@ -528,13 +528,15 @@ binary_sensor:
       inverted: true
     name: "Shortcut 1"
     id: shortcut_1
-    internal: false
+    internal: true
     on_multi_click:
       - timing:
           - ON for at most 350ms
         then:
           - script.execute: reset_idle_timer
-          - switch.turn_on: tv_power
+          - homeassistant.event:
+              event: esphome.remote_button_pressed
+              data: {button: "shortcut_1", type: "single"}
       - timing:
           - ON for at least 500ms
         then:
@@ -551,16 +553,15 @@ binary_sensor:
       inverted: true
     name: "Shortcut 2"
     id: shortcut_2
-    internal: false
+    internal: true
     on_multi_click:
       - timing:
           - ON for at most 350ms
         then:
           - script.execute: reset_idle_timer
-          - homeassistant.action:
-              action: media_player.turn_on
-              data:
-                entity_id: media_player.lg_webos_smart_tv
+          - homeassistant.event:
+              event: esphome.remote_button_pressed
+              data: {button: "shortcut_2", type: "single"}
       - timing:
           - ON for at least 500ms
         then:
@@ -568,6 +569,3 @@ binary_sensor:
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "shortcut_2", type: "long"}
-
-
-
