@@ -1,5 +1,3 @@
-
-
 binary_sensor:
   - platform: homeassistant
     id: tv_power
@@ -7,4 +5,9 @@ binary_sensor:
     entity_id: media_player.lg_webos_smart_tv
     internal: false
 
+  - platform: homeassistant
+    id: amp_power
+    name: amp_power
+    entity_id: media_player.lounge_av_reciever
+    internal: false
 
