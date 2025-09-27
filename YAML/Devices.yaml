@@ -5,6 +5,7 @@ binary_sensor:
     entity_id: media_player.lg_webos_smart_tv
     internal: false
 
+text_sensor:
   - platform: homeassistant
     id: amp_power
     name: amp_power
