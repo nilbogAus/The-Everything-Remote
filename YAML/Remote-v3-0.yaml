@@ -6,11 +6,15 @@ script:
 
 deep_sleep:
   id: deep_sleep_ctrl
-  wakeup_pin:
-    pins:
+  esp32_ext1_wakeup: 
+  # wakeup_pin:
+  #   number: GPIO0
+  esp32_ext1_wakeup:
+    pins: 
       - 0
       - 34
-    inverted: true
+    mode: ANY_LOW
+#    inverted: true
     allow_other_uses: true
 
 interval:
