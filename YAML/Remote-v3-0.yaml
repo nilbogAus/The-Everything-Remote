@@ -34,7 +34,7 @@ interval:
                 - binary_sensor.is_off: tv_power 
                 - binary_sensor.is_off: amp_power
           then:
-            - deep_sleep.enter: deep_sleep_ctrl
+           # - deep_sleep.enter: deep_sleep_ctrl
 
 # BUTTONS
 binary_sensor:
