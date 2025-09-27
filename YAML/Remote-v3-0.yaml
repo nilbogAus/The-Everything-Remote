@@ -280,11 +280,6 @@ binary_sensor:
     name: "Volume Up"
     id: volume_up
     internal: true
-    filters:
-      - autorepeat:
-        - delay: 1s
-          time_off: 100ms
-          time_on: 400ms
     on_click:
       - script.execute: reset_idle_timer
       - while: # This loop will continue as long as the condition is true
@@ -295,8 +290,7 @@ binary_sensor:
             - homeassistant.event:
                 event: esphome.remote_button_pressed
                 data: {button: "volume_up", type: "single"}
-            - delay: 1s # Adjust the delay for desired repeat speed
-
+            - delay: 200ms # Adjust the delay for desired repeat speed
 
   - platform: gpio
     pin:
@@ -334,7 +328,10 @@ binary_sensor:
     name: "Channel Up"
     id: channel_up
     internal: true
-    on_click:
+    on_multi_click:
+      - timing:
+          - ON for at most 350ms
+        then:
           - script.execute: reset_idle_timer
           - homeassistant.event:
               event: esphome.remote_button_pressed
