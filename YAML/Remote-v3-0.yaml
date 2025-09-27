@@ -534,7 +534,7 @@ binary_sensor:
           - ON for at most 350ms
         then:
           - script.execute: reset_idle_timer
-          - binary_sensor.turn_on: tv_power
+          - switch.turn_on: tv_power
       - timing:
           - ON for at least 500ms
         then:
