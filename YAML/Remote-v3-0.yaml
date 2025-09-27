@@ -7,7 +7,9 @@ script:
 deep_sleep:
   id: deep_sleep_ctrl
   wakeup_pin:
-    number: GPIO0
+    pins:
+      - GPIO0
+      - GPIO34
     inverted: true
     allow_other_uses: true
 
