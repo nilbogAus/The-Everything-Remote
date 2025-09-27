@@ -284,7 +284,7 @@ binary_sensor:
       - script.execute: reset_idle_timer
       - while: 
           condition:
-            binary_sensor.is_off: volume_up # Check if the button is still pressed
+            binary_sensor.is_on: volume_up # Check if the button is still pressed
           then:
             # Actions to repeat while the button is pressed
             - homeassistant.event:
