@@ -32,7 +32,7 @@ light:
     name: "Onboard LED"
     id: "Onboard_LED"
     pin: 
-      number: GPIO5
+      number: GPI22
       inverted: true
 
 # BUTTONS
@@ -112,29 +112,29 @@ binary_sensor:
               event: esphome.remote_button_pressed
               data: {button: "home", type: "long"}
 
-  # - platform: gpio
-  #   pin:
-  #     number: GPIO5
-  #     mode:
-  #       input: true
-  #       pullup: true
-  #     inverted: true
-  #   name: "Play Pause"
-    # id: play_pause
-    # internal: true
-    # on_multi_click:
-    #   - timing:
-    #       - ON for at most 350ms
-    #     then:
-    #       - homeassistant.event:
-    #           event: esphome.remote_button_pressed
-    #           data: {button: "play_pause", type: "single"}
-    #   - timing:
-    #       - ON for at least 500ms
-    #     then:
-    #       - homeassistant.event:
-    #           event: esphome.remote_button_pressed
-    #           data: {button: "play_pause", type: "long"}
+  - platform: gpio
+    pin:
+      number: GPIO5
+      mode:
+        input: true
+        pullup: true
+      inverted: true
+    name: "Play Pause"
+    id: play_pause
+    internal: true
+    on_multi_click:
+      - timing:
+          - ON for at most 350ms
+        then:
+          - homeassistant.event:
+              event: esphome.remote_button_pressed
+              data: {button: "play_pause", type: "single"}
+      - timing:
+          - ON for at least 500ms
+        then:
+          - homeassistant.event:
+              event: esphome.remote_button_pressed
+              data: {button: "play_pause", type: "long"}
 
   - platform: gpio
     pin:
