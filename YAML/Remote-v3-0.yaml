@@ -32,7 +32,7 @@ light:
     name: "Onboard LED"
     id: "Onboard_LED"
     pin: 
-      number: GPI22
+      number: GPIO22
       inverted: true
 
 # BUTTONS
