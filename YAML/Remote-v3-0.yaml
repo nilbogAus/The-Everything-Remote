@@ -10,6 +10,7 @@ script:
           id: LED  
   - id: script_startup
     then:
+      - delay: 20s
       - light.turn_on: LED
 
 deep_sleep:
