@@ -1,8 +1,17 @@
 script:
-  - id: go_to_sleep
+  - id: script_go_to_sleep
     then:
+      - light.turn_on:
+          id: LED
+          effects: pulse
       - delay: 20s  
       - deep_sleep.enter: deep_sleep_ctrl
+      - light.turn_off:
+          id: LED  
+  - id: script_startup
+    then:
+      - light.turn_on:
+          id: LED
 
 deep_sleep:
   id: deep_sleep_ctrl 
@@ -24,16 +33,18 @@ interval:
                   state: 'off'      
           then:
             - logger.log: "Go to sleep"
-            - script.execute: go_to_sleep
+            - script.execute: script_go_to_sleep
           else:
             - logger.log: "stay awake"
 light: 
   - platform: status_led
     name: "LED"
-    id: "LED"
+    id: LED
     pin: 
       number: GPIO13
       inverted: false
+    effects:
+      - pulse:
 
 # BUTTONS
 binary_sensor:
@@ -62,7 +73,7 @@ binary_sensor:
           - homeassistant.event:
               event: esphome.remote_button_pressed
               data: {button: "power", type: "long"}
-          - script.execute: go_to_sleep
+          - script.execute: script_go_to_sleep
             
 
   - platform: gpio
