@@ -3,7 +3,7 @@ script:
     then:
       - light.turn_on:
           id: LED
-          effects: pulse
+          effect: pulse
       - delay: 20s  
       - deep_sleep.enter: deep_sleep_ctrl
       - light.turn_off:
