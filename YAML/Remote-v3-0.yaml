@@ -10,24 +10,7 @@ script:
           id: LED  
   - id: script_startup
     then:
-      - logger.log: "Awake"
-      - delay: 1s
-      - logger.log: "Awake1"
-      - delay: 1s
-      - logger.log: "Awake2"
-      - delay: 1s
-      - logger.log: "Awake3"
-      - delay: 1s
-      - logger.log: "Awake4"
-      - delay: 1s
-      - logger.log: "Awake5"
-      - delay: 1s
-      - logger.log: "Awake6"
-      - delay: 1s
-      - logger.log: "Awake7"
-      - delay: 1s
-      - logger.log: "Awake8"
-      - delay: 1s
+      - delay: 4s #wait for boot
       - light.turn_on: LED
 
 deep_sleep:
