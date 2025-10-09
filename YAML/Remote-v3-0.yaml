@@ -34,8 +34,8 @@ deep_sleep:
     inverted: true
     allow_other_uses: true
 
-interval:
-  - interval: 300s
+interval: # backup power off shouldn't be needed
+  - interval: 30min
     then:
       - logger.log: "interval"
       - script.execute: script_check_turn_off
@@ -169,19 +169,15 @@ binary_sensor:
     name: "Up"
     id: up
     internal: true
-    on_multi_click:
-      - timing:
-          - ON for at most 350ms
-        then:
-          - homeassistant.event:
-              event: esphome.remote_button_pressed
-              data: {button: "up", type: "single"}
-      - timing:
-          - ON for at least 500ms
-        then:
-          - homeassistant.event:
-              event: esphome.remote_button_pressed
-              data: {button: "up", type: "long"}
+    on_state:
+      - while: 
+          condition:
+            binary_sensor.is_on: up 
+          then:
+            - homeassistant.event:
+                event: esphome.remote_button_pressed
+                data: {button: "up", type: "repeat"}
+            - delay: 200ms # Adjust the delay for desired repeat speed
 
   - platform: gpio
     pin:
@@ -193,19 +189,15 @@ binary_sensor:
     name: "Left"
     id: left
     internal: true
-    on_multi_click:
-      - timing:
-          - ON for at most 350ms
-        then:
-          - homeassistant.event:
-              event: esphome.remote_button_pressed
-              data: {button: "left", type: "single"}
-      - timing:
-          - ON for at least 500ms
-        then:
-          - homeassistant.event:
-              event: esphome.remote_button_pressed
-              data: {button: "left", type: "long"}
+    on_state:
+      - while: 
+          condition:
+            binary_sensor.is_on: left 
+          then:
+            - homeassistant.event:
+                event: esphome.remote_button_pressed
+                data: {button: "left", type: "repeat"}
+            - delay: 200ms # Adjust the delay for desired repeat speed
 
   - platform: gpio
     pin:
@@ -241,19 +233,15 @@ binary_sensor:
     name: "Right"
     id: right
     internal: true
-    on_multi_click:
-      - timing:
-          - ON for at most 350ms
-        then:
-          - homeassistant.event:
-              event: esphome.remote_button_pressed
-              data: {button: "right", type: "single"}
-      - timing:
-          - ON for at least 500ms
-        then:
-          - homeassistant.event:
-              event: esphome.remote_button_pressed
-              data: {button: "right", type: "long"}
+    on_state:
+      - while: 
+          condition:
+            binary_sensor.is_on: right 
+          then:
+            - homeassistant.event:
+                event: esphome.remote_button_pressed
+                data: {button: "right", type: "repeat"}
+            - delay: 200ms # Adjust the delay for desired repeat speed
 
   - platform: gpio
     pin:
@@ -265,19 +253,15 @@ binary_sensor:
     name: "Down"
     id: down
     internal: true
-    on_multi_click:
-      - timing:
-          - ON for at most 350ms
-        then:
-          - homeassistant.event:
-              event: esphome.remote_button_pressed
-              data: {button: "down", type: "single"}
-      - timing:
-          - ON for at least 500ms
-        then:
-          - homeassistant.event:
-              event: esphome.remote_button_pressed
-              data: {button: "down", type: "long"}
+    on_state:
+      - while: 
+          condition:
+            binary_sensor.is_on: down 
+          then:
+            - homeassistant.event:
+                event: esphome.remote_button_pressed
+                data: {button: "down", type: "repeat"}
+            - delay: 200ms # Adjust the delay for desired repeat speed
 
   - platform: gpio
     pin:
@@ -332,19 +316,16 @@ binary_sensor:
     name: "Channel Up"
     id: channel_up
     internal: true
-    on_multi_click:
-      - timing:
-          - ON for at most 350ms
-        then:
-          - homeassistant.event:
-              event: esphome.remote_button_pressed
-              data: {button: "channel_up", type: "single"}
-      - timing:
-          - ON for at least 500ms
-        then:
-          - homeassistant.event:
-              event: esphome.remote_button_pressed
-              data: {button: "channel_up", type: "long"}
+    on_state:
+      - while: 
+          condition:
+            binary_sensor.is_on: channel_up 
+          then:
+            - homeassistant.event:
+                event: esphome.remote_button_pressed
+                data: {button: "channel_up", type: "repeat"}
+            - delay: 200ms # Adjust the delay for desired repeat speed
+
 
   - platform: gpio
     pin:
@@ -400,20 +381,16 @@ binary_sensor:
     name: "Channel Down"
     id: channel_down
     internal: true
-    on_multi_click:
-      - timing:
-          - ON for at most 350ms
-        then:
-          - homeassistant.event:
-              event: esphome.remote_button_pressed
-              data: {button: "channel_down", type: "single"}
-      - timing:
-          - ON for at least 500ms
-        then:
-          - homeassistant.event:
-              event: esphome.remote_button_pressed
-              data: {button: "channel_down", type: "long"}
-
+    on_state:
+      - while: 
+          condition:
+            binary_sensor.is_on: channel_down 
+          then:
+            - homeassistant.event:
+                event: esphome.remote_button_pressed
+                data: {button: "channel_down", type: "repeat"}
+            - delay: 200ms # Adjust the delay for desired repeat speed
+            
   - platform: gpio
     pin:
       number: GPIO32
