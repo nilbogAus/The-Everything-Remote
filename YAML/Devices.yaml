@@ -4,6 +4,10 @@ binary_sensor:
     name: tv_power
     entity_id: media_player.lg_webos_smart_tv
     internal: false
+    on_state_change: 
+      then:
+        - logger.log: "tv state"
+        - script.execute: script_check_turn_off
 
 text_sensor:
   - platform: homeassistant
@@ -11,4 +15,8 @@ text_sensor:
     name: amp_power
     entity_id: media_player.lounge_av_reciever
     internal: false
+    on_state_change: 
+      then:
+        - logger.log: "amp state"
+        - script.execute: script_check_turn_off
 

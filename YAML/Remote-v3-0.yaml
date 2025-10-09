@@ -12,18 +12,8 @@ script:
     then:
       - delay: 4s #wait for boot
       - light.turn_on: LED
-
-deep_sleep:
-  id: deep_sleep_ctrl 
-  wakeup_pin:
-    number: GPIO0
-    inverted: true
-    allow_other_uses: true
-
-interval:
-  - interval: 20s
+  - id: script_check_turn_off
     then:
-      - logger.log: "interval"
       - if:
           condition:
             - and:
@@ -36,6 +26,20 @@ interval:
             - script.execute: script_go_to_sleep
           else:
             - logger.log: "stay awake"
+
+deep_sleep:
+  id: deep_sleep_ctrl 
+  wakeup_pin:
+    number: GPIO0
+    inverted: true
+    allow_other_uses: true
+
+interval:
+  - interval: 300s
+    then:
+      - logger.log: "interval"
+      - script.execute: script_check_turn_off
+
 light: 
   - platform: status_led
     name: "LED"
