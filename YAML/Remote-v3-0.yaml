@@ -281,7 +281,6 @@ binary_sensor:
       number: GPIO36
       mode:
         input: true
-        pullup: true
       inverted: true
     name: "Mute"
     id: mute
