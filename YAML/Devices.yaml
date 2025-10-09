@@ -15,7 +15,7 @@ text_sensor:
     name: amp_power
     entity_id: media_player.lounge_av_reciever
     internal: false
-    on_state_change: 
+    on_value: 
       then:
         - logger.log: "amp state"
         - script.execute: script_check_turn_off
