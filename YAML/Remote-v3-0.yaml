@@ -3,7 +3,7 @@ script:
     then:
       - light.turn_on:
           id: LED
-          effect: pulse
+          effect: Blink
       - delay: 20s  
       - deep_sleep.enter: deep_sleep_ctrl
       - light.turn_off:
@@ -43,7 +43,14 @@ light:
       number: GPIO13
       inverted: false
     effects:
-      - pulse:
+      - strobe:
+          name: Blink # 0.1s on, 2s off
+          colors:
+            - state: true
+              brightness: 100%
+              duration: 500ms
+            - state: false
+              duration: 500ms
 
 # BUTTONS
 binary_sensor:
