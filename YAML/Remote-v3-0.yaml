@@ -27,13 +27,13 @@ interval:
             - script.execute: go_to_sleep
           else:
             - logger.log: "stay awake"
-# light: 
-#   - platform: status_led
-#     name: "Onboard LED"
-#     id: "Onboard_LED"
-#     pin: 
-#       number: GPIO5
-#       inverted: true
+light: 
+  - platform: status_led
+    name: "LED"
+    id: "LED"
+    pin: 
+      number: GPIO13
+      inverted: false
 
 # BUTTONS
 binary_sensor:
