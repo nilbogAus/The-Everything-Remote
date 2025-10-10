@@ -1,3 +1,5 @@
+# forked from TheStokPot's remote changed for waht I need 
+# as of October 2025 still under active development. I will try to cleanup and document later but adding stuff I change here as I go as CC matters
 # The Everything Remote
 
 A simple universal remote designed for ESPHome - simple to assemble for beginners and experienced tinkerers alike! 
