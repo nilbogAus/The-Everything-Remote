@@ -12,6 +12,9 @@ script:
     then:
       - delay: 4s #wait for boot
       - light.turn_on: LED
+      - homeassistant.event:
+          event: esphome.remote_button_pressed
+          data: {button: "power", type: "single"}
   - id: script_check_turn_off
     then:
       - if:
