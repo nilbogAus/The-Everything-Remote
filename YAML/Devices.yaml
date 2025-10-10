@@ -7,6 +7,7 @@ binary_sensor:
     on_state_change: 
       then:
         - logger.log: "tv state"
+        - delay: 5s
         - script.execute: script_check_turn_off
 
 text_sensor:
@@ -18,5 +19,6 @@ text_sensor:
     on_value: 
       then:
         - logger.log: "amp state"
+        - delay: 5s
         - script.execute: script_check_turn_off
 
