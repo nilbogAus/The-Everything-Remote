@@ -12,6 +12,8 @@ script:
     then:
       - delay: 5s #wait for boot
       - light.turn_on: LED
+      - delay: 1s #wait for boot
+      - logger.log: "sending power short"
       - homeassistant.event:
           event: esphome.remote_button_pressed
           data: {button: "power", type: "single"}
