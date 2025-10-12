@@ -14,6 +14,9 @@ script:
       - delay: 4s #wait for boot
       - logger.log: "LED on"
       - light.turn_on: LED
+      - wait_until:
+          condition:
+            api.connected:      
       - logger.log: "sending power short"
       - homeassistant.event:
           event: esphome.remote_button_pressed
