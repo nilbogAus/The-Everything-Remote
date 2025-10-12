@@ -102,11 +102,15 @@ binary_sensor:
       - timing:
           - ON for at least 500ms
         then:
-          - logger.log: "Go to sleep"
-          - homeassistant.event:
-              event: esphome.remote_button_pressed
-              data: {button: "power", type: "long"}
-          - script.execute: script_go_to_sleep
+          - if:
+              condition:
+                - lambda: return id(glb_powered_up);     
+              then:
+                - logger.log: "Go to sleep"
+                - homeassistant.event:
+                    event: esphome.remote_button_pressed
+                    data: {button: "power", type: "long"}
+                - script.execute: script_go_to_sleep
             
 
   - platform: gpio
