@@ -9,11 +9,13 @@ binary_sensor:
         - logger.log: "tv state"
         - if:
             condition:
-              - logger.log: "tv state - not powered up"
               - lambda: return id(glb_powered_up);     
             then:
               - logger.log: "tv state - is powered up"
-              - script.execute: script_check_turn_off              
+              - script.execute: script_check_turn_off       
+            else:
+              - logger.log: "tv state - not powered up"
+       
 
 
 text_sensor:
@@ -27,9 +29,9 @@ text_sensor:
         - logger.log: "amp state"
         - if:
             condition:
-              - logger.log: "tv state - not powered up"
               - lambda: return id(glb_powered_up);     
             then:
               - logger.log: "tv state - is powered up"
               - script.execute: script_check_turn_off    
-
+            else:
+              - logger.log: "tv state - not powered up"
