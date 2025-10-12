@@ -56,11 +56,11 @@ deep_sleep:
     inverted: true
     allow_other_uses: true
 
-# interval: # backup power off shouldn't be needed
-#   - interval: 30min
-#     then:
-#       - logger.log: "interval"
-#       - script.execute: script_check_turn_off
+interval: # backup power off shouldn't be needed
+  - interval: 30min
+    then:
+      - logger.log: "interval"
+      - script.execute: script_check_turn_off
 
 light: 
   - platform: status_led
