@@ -1,0 +1,338 @@
+alias: Remote
+description: ""
+triggers:
+  - trigger: event
+    event_type: esphome.remote_button_pressed
+conditions: []
+actions:
+  - choose:
+      - conditions:
+          - condition: template
+            value_template: "{{trigger.event.data.button == 'shortcut_1'}}"
+        sequence:
+          - parallel:
+              - alias: LG TV Sequence
+                sequence:
+                  - action: media_player.turn_on
+                    metadata: {}
+                    data: {}
+                    target:
+                      device_id:
+                        - 6461dcd2ff85cf0f93ae192920898f19
+                  - wait_for_trigger:
+                      - device_id: 6461dcd2ff85cf0f93ae192920898f19
+                        domain: media_player
+                        entity_id: 6ef4a66615cc7074b3c30608919091e7
+                        type: turned_on
+                        trigger: device
+                  - action: media_player.select_source
+                    metadata: {}
+                    data:
+                      source: HDMI2
+                    target:
+                      device_id: 6461dcd2ff85cf0f93ae192920898f19
+              - alias: Apple TV Sequence
+                sequence:
+                  - action: remote.turn_on
+                    metadata: {}
+                    data: {}
+                    target:
+                      device_id: 466b9f450c887ef74d15d09ed3ffe1b3
+                  - delay:
+                      hours: 0
+                      minutes: 0
+                      seconds: 0
+                      milliseconds: 500
+                  - action: media_player.turn_on
+                    metadata: {}
+                    data: {}
+                    target:
+                      device_id:
+                        - 466b9f450c887ef74d15d09ed3ffe1b3
+              - sequence:
+                  - action: media_player.turn_on
+                    metadata: {}
+                    data: {}
+                    target:
+                      device_id:
+                        - 13f405bca5e64a54d1df697bf80e2163
+                  - action: media_player.select_source
+                    metadata: {}
+                    data:
+                      source: Apple TV
+                    target:
+                      device_id: 13f405bca5e64a54d1df697bf80e2163
+                alias: Amp  Sequence
+        alias: Shortcut 1 (Apple TV)
+      - conditions:
+          - condition: template
+            value_template: >-
+              {{trigger.event.data.button == 'power' and trigger.event.data.type
+              == 'short'}}
+        sequence:
+          - parallel:
+              - alias: LG TV Sequence
+                sequence:
+                  - action: media_player.turn_on
+                    metadata: {}
+                    data: {}
+                    target:
+                      device_id:
+                        - 6461dcd2ff85cf0f93ae192920898f19
+                  - wait_for_trigger:
+                      - device_id: 6461dcd2ff85cf0f93ae192920898f19
+                        domain: media_player
+                        entity_id: 6ef4a66615cc7074b3c30608919091e7
+                        type: turned_on
+                        trigger: device
+                  - action: media_player.select_source
+                    metadata: {}
+                    data:
+                      source: HDMI2
+                    target:
+                      device_id: 6461dcd2ff85cf0f93ae192920898f19
+              - alias: Apple TV Sequence
+                sequence:
+                  - action: remote.turn_on
+                    metadata: {}
+                    data: {}
+                    target:
+                      device_id: 466b9f450c887ef74d15d09ed3ffe1b3
+                  - delay:
+                      hours: 0
+                      minutes: 0
+                      seconds: 0
+                      milliseconds: 500
+                  - action: media_player.turn_on
+                    metadata: {}
+                    data: {}
+                    target:
+                      device_id:
+                        - 466b9f450c887ef74d15d09ed3ffe1b3
+              - sequence:
+                  - action: media_player.turn_on
+                    metadata: {}
+                    data: {}
+                    target:
+                      device_id:
+                        - 13f405bca5e64a54d1df697bf80e2163
+                  - action: media_player.select_source
+                    metadata: {}
+                    data:
+                      source: Apple TV
+                    target:
+                      device_id: 13f405bca5e64a54d1df697bf80e2163
+                alias: Amp  Sequence
+        alias: Power - Short (Apple TV)
+      - conditions:
+          - condition: template
+            value_template: >-
+              {{trigger.event.data.button == 'power' and trigger.event.data.type
+              == 'long'}}
+        sequence:
+          - repeat:
+              sequence:
+                - data: {}
+                  target:
+                    device_id:
+                      - 6461dcd2ff85cf0f93ae192920898f19
+                      - 13f405bca5e64a54d1df697bf80e2163
+                      - 466b9f450c887ef74d15d09ed3ffe1b3
+                  action: media_player.turn_off
+                - delay:
+                    hours: 0
+                    minutes: 0
+                    seconds: 3
+                    milliseconds: 0
+              count: 2
+          - action: remote.turn_off
+            metadata: {}
+            data: {}
+            target:
+              device_id: 466b9f450c887ef74d15d09ed3ffe1b3
+        alias: Power - Long (everything off)
+      - conditions:
+          - condition: template
+            value_template: "{{trigger.event.data.button == 'volume_up'}}"
+        sequence:
+          - action: media_player.volume_up
+            metadata: {}
+            data: {}
+            target:
+              device_id: 13f405bca5e64a54d1df697bf80e2163
+        alias: Volume up
+      - conditions:
+          - condition: template
+            value_template: "{{trigger.event.data.button == 'volume_down'}}"
+        sequence:
+          - action: media_player.volume_down
+            metadata: {}
+            data: {}
+            target:
+              device_id: 13f405bca5e64a54d1df697bf80e2163
+        alias: Volume down
+      - conditions:
+          - condition: template
+            value_template: "{{trigger.event.data.button == 'left'}}"
+        sequence:
+          - action: remote.send_command
+            metadata: {}
+            data:
+              num_repeats: 1
+              delay_secs: 0.4
+              hold_secs: 0
+              command: left
+            target:
+              device_id: 466b9f450c887ef74d15d09ed3ffe1b3
+        alias: Left
+      - conditions:
+          - condition: template
+            value_template: "{{trigger.event.data.button == 'right'}}"
+        sequence:
+          - action: remote.send_command
+            metadata: {}
+            data:
+              num_repeats: 1
+              delay_secs: 0.4
+              hold_secs: 0
+              command: right
+            target:
+              device_id: 466b9f450c887ef74d15d09ed3ffe1b3
+        alias: Right
+      - conditions:
+          - condition: template
+            value_template: "{{trigger.event.data.button == 'up'}}"
+        sequence:
+          - action: remote.send_command
+            metadata: {}
+            data:
+              num_repeats: 1
+              delay_secs: 0.4
+              hold_secs: 0
+              command: up
+            target:
+              device_id: 466b9f450c887ef74d15d09ed3ffe1b3
+        alias: Up
+      - conditions:
+          - condition: template
+            value_template: "{{trigger.event.data.button == 'down'}}"
+        sequence:
+          - action: remote.send_command
+            metadata: {}
+            data:
+              num_repeats: 1
+              delay_secs: 0.4
+              hold_secs: 0
+              command: down
+            target:
+              device_id: 466b9f450c887ef74d15d09ed3ffe1b3
+        alias: Down
+      - conditions:
+          - condition: template
+            value_template: "{{trigger.event.data.button == 'select_button'}}"
+        sequence:
+          - action: remote.send_command
+            metadata: {}
+            data:
+              num_repeats: 1
+              delay_secs: 0.4
+              hold_secs: 0
+              command: select
+            target:
+              device_id: 466b9f450c887ef74d15d09ed3ffe1b3
+        alias: Select
+      - conditions:
+          - condition: template
+            value_template: "{{trigger.event.data.button == 'back'}}"
+        sequence:
+          - action: remote.send_command
+            metadata: {}
+            data:
+              num_repeats: 1
+              delay_secs: 0.4
+              hold_secs: 0
+              command: menu
+            target:
+              device_id: 466b9f450c887ef74d15d09ed3ffe1b3
+        alias: Back
+      - conditions:
+          - condition: template
+            value_template: "{{trigger.event.data.button == 'play_pause'}}"
+        sequence:
+          - action: remote.send_command
+            metadata: {}
+            data:
+              num_repeats: 1
+              delay_secs: 0.4
+              hold_secs: 0
+              command: pause
+            target:
+              device_id: 466b9f450c887ef74d15d09ed3ffe1b3
+        alias: Play Pause
+      - conditions:
+          - condition: template
+            value_template: "{{trigger.event.data.button == 'home'}}"
+        sequence:
+          - action: remote.send_command
+            metadata: {}
+            data:
+              num_repeats: 1
+              delay_secs: 0.4
+              hold_secs: 0
+              command: home
+            target:
+              device_id: 466b9f450c887ef74d15d09ed3ffe1b3
+        alias: Play Pause
+      - conditions:
+          - condition: template
+            value_template: "{{trigger.event.data.button == 'mute'}}"
+        sequence:
+          - if:
+              - condition: state
+                entity_id: media_player.lounge_av_reciever
+                attribute: is_volume_muted
+                state: true
+            then:
+              - action: media_player.volume_mute
+                metadata: {}
+                data:
+                  is_volume_muted: false
+                target:
+                  device_id: 13f405bca5e64a54d1df697bf80e2163
+            else:
+              - action: media_player.volume_mute
+                metadata: {}
+                data:
+                  is_volume_muted: true
+                target:
+                  device_id: 13f405bca5e64a54d1df697bf80e2163
+        alias: Mute
+      - conditions:
+          - condition: template
+            value_template: "{{trigger.event.data.button == 'channel_up'}}"
+        sequence:
+          - action: remote.send_command
+            metadata: {}
+            data:
+              num_repeats: 1
+              delay_secs: 0.4
+              hold_secs: 0
+              command: next
+            target:
+              device_id: 466b9f450c887ef74d15d09ed3ffe1b3
+        alias: Channel Up
+      - conditions:
+          - condition: template
+            value_template: "{{trigger.event.data.button == 'channel_down'}}"
+        sequence:
+          - action: remote.send_command
+            metadata: {}
+            data:
+              num_repeats: 1
+              delay_secs: 0.4
+              hold_secs: 0
+              command: previous
+            target:
+              device_id: 466b9f450c887ef74d15d09ed3ffe1b3
+        alias: Channel Down
+mode: restart
