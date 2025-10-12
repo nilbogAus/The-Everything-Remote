@@ -6,15 +6,11 @@ binary_sensor:
     internal: false
     on_state_change: 
       then:
-        - logger.log: "tv state"
         - if:
             condition:
               - lambda: return id(glb_powered_up);     
             then:
-              - logger.log: "tv state - is powered up"
               - script.execute: script_check_turn_off       
-            else:
-              - logger.log: "tv state - not powered up"
        
 
 
@@ -26,12 +22,8 @@ text_sensor:
     internal: false
     on_value: 
       then:
-        - logger.log: "amp state"
         - if:
             condition:
               - lambda: return id(glb_powered_up);     
             then:
-              - logger.log: "tv state - is powered up"
               - script.execute: script_check_turn_off    
-            else:
-              - logger.log: "tv state - not powered up"
