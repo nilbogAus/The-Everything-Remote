@@ -17,6 +17,7 @@ script:
       - wait_until:
           condition:
             api.connected:      
+      - delay: 1s
       - logger.log: "sending power short"
       - homeassistant.event:
           event: esphome.remote_button_pressed
