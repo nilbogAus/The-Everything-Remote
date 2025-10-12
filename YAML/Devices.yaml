@@ -7,21 +7,14 @@ binary_sensor:
     on_state_change: 
       then:
         - logger.log: "tv state"
-        - delay: 15s
-        - script.execute: script_check_turn_off
-#         - logger.log: "tv state"
-#         - if:
-#             condition:
-#               - lambda: return id(tv_power_first_trigger);     
-#             then:
-#               - logger.log: "tv state first"
-#               - globals.set:
-#                   id: tv_power_first_trigger
-#                   value: 'false'
-#               - script.execute: script_startup
-#             else:
-#               - logger.log: "tv state not first"
-#               - script.execute: script_check_turn_off
+        - if:
+            condition:
+              - logger.log: "tv state - not powered up"
+              - lambda: return id(glb_powered_up);     
+            then:
+              - logger.log: "tv state - is powered up"
+              - script.execute: script_check_turn_off              
+
 
 text_sensor:
   - platform: homeassistant
@@ -32,6 +25,11 @@ text_sensor:
     on_value: 
       then:
         - logger.log: "amp state"
-        - delay: 15s
-        - script.execute: script_check_turn_off
+        - if:
+            condition:
+              - logger.log: "tv state - not powered up"
+              - lambda: return id(glb_powered_up);     
+            then:
+              - logger.log: "tv state - is powered up"
+              - script.execute: script_check_turn_off    
 

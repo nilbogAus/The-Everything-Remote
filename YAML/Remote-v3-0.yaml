@@ -22,7 +22,7 @@ script:
       - globals.set:
           id: glb_powered_up
           value: 'true'
-      - logger.log: "glb_powered_up set"
+      - logger.log: "glb_powered_up set true"
 
   - id: script_check_turn_off
     then:
