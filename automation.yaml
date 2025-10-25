@@ -79,12 +79,19 @@ actions:
                     target:
                       device_id:
                         - 6461dcd2ff85cf0f93ae192920898f19
-                  - wait_for_trigger:
-                      - device_id: 6461dcd2ff85cf0f93ae192920898f19
-                        domain: media_player
-                        entity_id: 6ef4a66615cc7074b3c30608919091e7
-                        type: turned_on
-                        trigger: device
+                  - repeat:
+                      until:
+                        - condition: device
+                          device_id: 6461dcd2ff85cf0f93ae192920898f19
+                          domain: media_player
+                          entity_id: 6ef4a66615cc7074b3c30608919091e7
+                          type: is_on
+                      sequence:
+                        - delay:
+                            hours: 0
+                            minutes: 0
+                            seconds: 1
+                            milliseconds: 0
                   - action: media_player.select_source
                     metadata: {}
                     data:
@@ -109,6 +116,16 @@ actions:
                     target:
                       device_id:
                         - 466b9f450c887ef74d15d09ed3ffe1b3
+                  - action: remote.send_command
+                    metadata: {}
+                    data:
+                      num_repeats: 1
+                      delay_secs: 0.4
+                      hold_secs: 0
+                      command: home
+                    target:
+                      device_id: 466b9f450c887ef74d15d09ed3ffe1b3
+                enabled: true
               - sequence:
                   - action: media_player.turn_on
                     metadata: {}
@@ -150,6 +167,7 @@ actions:
             data: {}
             target:
               device_id: 466b9f450c887ef74d15d09ed3ffe1b3
+            enabled: false
         alias: Power - Long (everything off)
       - conditions:
           - condition: template
@@ -259,15 +277,32 @@ actions:
           - condition: template
             value_template: "{{trigger.event.data.button == 'play_pause'}}"
         sequence:
-          - action: remote.send_command
-            metadata: {}
-            data:
-              num_repeats: 1
-              delay_secs: 0.4
-              hold_secs: 0
-              command: pause
-            target:
-              device_id: 466b9f450c887ef74d15d09ed3ffe1b3
+          - if:
+              - condition: device
+                device_id: 466b9f450c887ef74d15d09ed3ffe1b3
+                domain: media_player
+                entity_id: 6abf2f59d8a15bda81a1cfc9ac107089
+                type: is_playing
+            then:
+              - action: remote.send_command
+                metadata: {}
+                data:
+                  num_repeats: 1
+                  delay_secs: 0.4
+                  hold_secs: 0
+                  command: pause
+                target:
+                  device_id: 466b9f450c887ef74d15d09ed3ffe1b3
+            else:
+              - action: remote.send_command
+                metadata: {}
+                data:
+                  num_repeats: 1
+                  delay_secs: 0.4
+                  hold_secs: 0
+                  command: play
+                target:
+                  device_id: 466b9f450c887ef74d15d09ed3ffe1b3
         alias: Play Pause
       - conditions:
           - condition: template
@@ -282,7 +317,7 @@ actions:
               command: home
             target:
               device_id: 466b9f450c887ef74d15d09ed3ffe1b3
-        alias: Play Pause
+        alias: home
       - conditions:
           - condition: template
             value_template: "{{trigger.event.data.button == 'mute'}}"
