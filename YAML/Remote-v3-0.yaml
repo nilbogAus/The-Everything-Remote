@@ -307,7 +307,7 @@ binary_sensor:
             - homeassistant.event:
                 event: esphome.remote_button_pressed
                 data: {button: "volume_up", type: "repeat"}
-            - delay: 75ms # Adjust the delay for desired repeat speed
+            - delay: 50ms # Adjust the delay for desired repeat speed
 
   - platform: gpio
     pin:
@@ -371,7 +371,7 @@ binary_sensor:
             - homeassistant.event:
                 event: esphome.remote_button_pressed
                 data: {button: "volume_down", type: "repeat"}
-            - delay: 75ms # Adjust the delay for desired repeat speed
+            - delay: 50ms # Adjust the delay for desired repeat speed
 
   - platform: gpio
     pin:
