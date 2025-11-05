@@ -472,8 +472,8 @@ binary_sensor:
         input: true
         pullup: true
       inverted: true
-    name: "Brightness Down"
-    id: brightness_down
+    name: "Shortcut 5"
+    id: shortcut_5
     internal: false 
     on_multi_click:
       - timing:
@@ -481,13 +481,13 @@ binary_sensor:
         then:
           - homeassistant.event:
               event: esphome.remote_button_pressed
-              data: {button: "brightness_down", type: "single"}
+              data: {button: "shortcut_5", type: "single"}
       - timing:
           - ON for at least 500ms
         then:
           - homeassistant.event:
               event: esphome.remote_button_pressed
-              data: {button: "brightness_down", type: "long"}
+              data: {button: "shortcut_5", type: "long"}
 
   - platform: gpio
     pin:
@@ -496,8 +496,8 @@ binary_sensor:
         input: true
         pullup: true
       inverted: true
-    name: "Brightness Up"
-    id: brightness_up
+    name: "Shortcut 6"
+    id: shortcut_6
     internal: false 
     on_multi_click:
       - timing:
@@ -505,13 +505,13 @@ binary_sensor:
         then:
           - homeassistant.event:
               event: esphome.remote_button_pressed
-              data: {button: "brightness_up", type: "single"}
+              data: {button: "shortcut_6", type: "single"}
       - timing:
           - ON for at least 500ms
         then:
           - homeassistant.event:
               event: esphome.remote_button_pressed
-              data: {button: "brightness_up", type: "long"}
+              data: {button: "shortcut_6", type: "long"}
 
   - platform: gpio
     pin:
