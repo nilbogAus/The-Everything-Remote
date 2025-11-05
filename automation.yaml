@@ -19,37 +19,28 @@ actions:
                     target:
                       device_id:
                         - 6461dcd2ff85cf0f93ae192920898f19
-                  - wait_for_trigger:
-                      - device_id: 6461dcd2ff85cf0f93ae192920898f19
-                        domain: media_player
-                        entity_id: 6ef4a66615cc7074b3c30608919091e7
-                        type: turned_on
-                        trigger: device
-                  - action: media_player.select_source
+                    enabled: false
+                  - delay:
+                      hours: 0
+                      minutes: 2
+                      seconds: 0
+                      milliseconds: 0
+                    enabled: false
+                  - action: media_player.turn_off
                     metadata: {}
-                    data:
-                      source: HDMI2
+                    data: {}
                     target:
                       device_id: 6461dcd2ff85cf0f93ae192920898f19
               - alias: Apple TV Sequence
                 sequence:
-                  - action: remote.turn_on
+                  - action: media_player.turn_off
                     metadata: {}
                     data: {}
                     target:
                       device_id: 466b9f450c887ef74d15d09ed3ffe1b3
-                  - delay:
-                      hours: 0
-                      minutes: 0
-                      seconds: 0
-                      milliseconds: 500
-                  - action: media_player.turn_on
-                    metadata: {}
-                    data: {}
-                    target:
-                      device_id:
-                        - 466b9f450c887ef74d15d09ed3ffe1b3
-              - sequence:
+                enabled: true
+              - alias: Amp  Sequence
+                sequence:
                   - action: media_player.turn_on
                     metadata: {}
                     data: {}
@@ -59,16 +50,19 @@ actions:
                   - action: media_player.select_source
                     metadata: {}
                     data:
-                      source: Apple TV
+                      source: Spotify
                     target:
                       device_id: 13f405bca5e64a54d1df697bf80e2163
-                alias: Amp  Sequence
-        alias: Shortcut 1 (Apple TV)
+                  - action: media_player.select_sound_mode
+                    metadata: {}
+                    data:
+                      sound_mode: all_ch_stereo
+                    target:
+                      device_id: 13f405bca5e64a54d1df697bf80e2163
+        alias: Shortcut 1 (Spotify)
       - conditions:
           - condition: template
-            value_template: >-
-              {{trigger.event.data.button == 'power' and trigger.event.data.type
-              == 'short'}}
+            value_template: "{{trigger.event.data.button == 'shortcut_2'}}"
         sequence:
           - parallel:
               - alias: LG TV Sequence
@@ -126,7 +120,8 @@ actions:
                     target:
                       device_id: 466b9f450c887ef74d15d09ed3ffe1b3
                 enabled: true
-              - sequence:
+              - alias: Amp  Sequence
+                sequence:
                   - action: media_player.turn_on
                     metadata: {}
                     data: {}
@@ -139,7 +134,227 @@ actions:
                       source: Apple TV
                     target:
                       device_id: 13f405bca5e64a54d1df697bf80e2163
-                alias: Amp  Sequence
+                  - action: media_player.select_sound_mode
+                    metadata: {}
+                    data:
+                      sound_mode: surr_decoder
+                    target:
+                      device_id: 13f405bca5e64a54d1df697bf80e2163
+        alias: Shortcut 2 (Apple TV)
+      - conditions:
+          - condition: template
+            value_template: "{{trigger.event.data.button == 'shortcut_4'}}"
+        sequence:
+          - parallel:
+              - alias: LG TV Sequence
+                sequence:
+                  - action: media_player.turn_on
+                    metadata: {}
+                    data: {}
+                    target:
+                      device_id:
+                        - 6461dcd2ff85cf0f93ae192920898f19
+                  - repeat:
+                      until:
+                        - condition: device
+                          device_id: 6461dcd2ff85cf0f93ae192920898f19
+                          domain: media_player
+                          entity_id: 6ef4a66615cc7074b3c30608919091e7
+                          type: is_on
+                      sequence:
+                        - delay:
+                            hours: 0
+                            minutes: 0
+                            seconds: 1
+                            milliseconds: 0
+                  - action: media_player.select_source
+                    metadata: {}
+                    data:
+                      source: Switch
+                    target:
+                      device_id: 6461dcd2ff85cf0f93ae192920898f19
+              - alias: Apple TV Sequence
+                sequence:
+                  - action: media_player.turn_off
+                    metadata: {}
+                    data: {}
+                    target:
+                      device_id: 466b9f450c887ef74d15d09ed3ffe1b3
+                enabled: true
+              - alias: Amp  Sequence
+                sequence:
+                  - action: media_player.turn_on
+                    metadata: {}
+                    data: {}
+                    target:
+                      device_id:
+                        - 13f405bca5e64a54d1df697bf80e2163
+                  - action: media_player.select_source
+                    metadata: {}
+                    data:
+                      source: Switch
+                    target:
+                      device_id: 13f405bca5e64a54d1df697bf80e2163
+                  - action: media_player.select_sound_mode
+                    metadata: {}
+                    data:
+                      sound_mode: action_game
+                    target:
+                      device_id: 13f405bca5e64a54d1df697bf80e2163
+        alias: Shortcut 4 (Switch)
+      - conditions:
+          - condition: template
+            value_template: "{{trigger.event.data.button == 'shortcut_6'}}"
+        sequence:
+          - parallel:
+              - alias: LG TV Sequence
+                sequence:
+                  - action: media_player.turn_on
+                    metadata: {}
+                    data: {}
+                    target:
+                      device_id:
+                        - 6461dcd2ff85cf0f93ae192920898f19
+                  - repeat:
+                      until:
+                        - condition: device
+                          device_id: 6461dcd2ff85cf0f93ae192920898f19
+                          domain: media_player
+                          entity_id: 6ef4a66615cc7074b3c30608919091e7
+                          type: is_on
+                      sequence:
+                        - delay:
+                            hours: 0
+                            minutes: 0
+                            seconds: 1
+                            milliseconds: 0
+                  - action: media_player.select_source
+                    metadata: {}
+                    data:
+                      source: HDMI2
+                    target:
+                      device_id: 6461dcd2ff85cf0f93ae192920898f19
+              - alias: Apple TV Sequence
+                sequence:
+                  - action: media_player.turn_off
+                    metadata: {}
+                    data: {}
+                    target:
+                      device_id: 466b9f450c887ef74d15d09ed3ffe1b3
+                enabled: true
+              - alias: Amp  Sequence
+                sequence:
+                  - action: media_player.turn_on
+                    metadata: {}
+                    data: {}
+                    target:
+                      device_id:
+                        - 13f405bca5e64a54d1df697bf80e2163
+                  - action: media_player.select_source
+                    metadata: {}
+                    data:
+                      source: Apple TV
+                    target:
+                      device_id: 13f405bca5e64a54d1df697bf80e2163
+                  - action: media_player.select_sound_mode
+                    metadata: {}
+                    data:
+                      sound_mode: surr_decoder
+                    target:
+                      device_id: 13f405bca5e64a54d1df697bf80e2163
+        alias: Shortcut 6 (FTA TV)
+      - conditions:
+          - condition: template
+            value_template: >-
+              {{trigger.event.data.button == 'power' and trigger.event.data.type
+              == 'short'}}
+        sequence:
+          - condition: device
+            device_id: 6461dcd2ff85cf0f93ae192920898f19
+            domain: media_player
+            entity_id: 6ef4a66615cc7074b3c30608919091e7
+            type: is_off
+          - condition: device
+            device_id: 13f405bca5e64a54d1df697bf80e2163
+            domain: media_player
+            entity_id: a774d97d3c89a02952033e53a866df0e
+            type: is_off
+          - parallel:
+              - alias: LG TV Sequence
+                sequence:
+                  - action: media_player.turn_on
+                    metadata: {}
+                    data: {}
+                    target:
+                      device_id:
+                        - 6461dcd2ff85cf0f93ae192920898f19
+                  - repeat:
+                      until:
+                        - condition: device
+                          device_id: 6461dcd2ff85cf0f93ae192920898f19
+                          domain: media_player
+                          entity_id: 6ef4a66615cc7074b3c30608919091e7
+                          type: is_on
+                      sequence:
+                        - delay:
+                            hours: 0
+                            minutes: 0
+                            seconds: 1
+                            milliseconds: 0
+                  - action: media_player.select_source
+                    metadata: {}
+                    data:
+                      source: HDMI2
+                    target:
+                      device_id: 6461dcd2ff85cf0f93ae192920898f19
+              - alias: Apple TV Sequence
+                sequence:
+                  - action: remote.turn_on
+                    metadata: {}
+                    data: {}
+                    target:
+                      device_id: 466b9f450c887ef74d15d09ed3ffe1b3
+                  - delay:
+                      hours: 0
+                      minutes: 0
+                      seconds: 0
+                      milliseconds: 500
+                  - action: media_player.turn_on
+                    metadata: {}
+                    data: {}
+                    target:
+                      device_id:
+                        - 466b9f450c887ef74d15d09ed3ffe1b3
+                  - action: remote.send_command
+                    metadata: {}
+                    data:
+                      num_repeats: 1
+                      delay_secs: 0.4
+                      hold_secs: 0
+                      command: home
+                    target:
+                      device_id: 466b9f450c887ef74d15d09ed3ffe1b3
+                enabled: true
+              - alias: Amp  Sequence
+                sequence:
+                  - action: media_player.turn_on
+                    metadata: {}
+                    data: {}
+                    target:
+                      device_id:
+                        - 13f405bca5e64a54d1df697bf80e2163
+                  - action: media_player.select_source
+                    metadata: {}
+                    data:
+                      source: Apple TV
+                    target:
+                      device_id: 13f405bca5e64a54d1df697bf80e2163
+                  - action: media_player.select_sound_mode
+                    metadata: {}
+                    data:
+                      sound_mode: surr_decoder
+                    target:
+                      device_id: 13f405bca5e64a54d1df697bf80e2163
         alias: Power - Short (Apple TV)
       - conditions:
           - condition: template
@@ -370,4 +585,28 @@ actions:
             target:
               device_id: 466b9f450c887ef74d15d09ed3ffe1b3
         alias: Channel Down
+      - conditions:
+          - condition: template
+            value_template: >-
+              {{trigger.event.data.button == 'settings' and
+              trigger.event.data.type == 'single'}}
+        sequence:
+          - device_id: 13f405bca5e64a54d1df697bf80e2163
+            domain: select
+            entity_id: 14110fe8abd87ffc001fb8b2ff99ec7c
+            type: select_option
+            option: toggle
+        alias: Settings (Single)
+      - conditions:
+          - condition: template
+            value_template: >-
+              {{trigger.event.data.button == 'settings' and
+              trigger.event.data.type == 'long'}}
+        sequence:
+          - device_id: 13f405bca5e64a54d1df697bf80e2163
+            domain: select
+            entity_id: 14110fe8abd87ffc001fb8b2ff99ec7c
+            type: select_option
+            option: toggle
+        alias: Settings (Long)
 mode: restart
