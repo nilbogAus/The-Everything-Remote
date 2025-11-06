@@ -74,7 +74,6 @@ light:
           name: Blink # 0.1s on, 2s off
           colors:
             - state: true
-              brightness: 100%
               duration: 500ms
             - state: false
               duration: 500ms
