@@ -350,7 +350,7 @@ binary_sensor:
             - homeassistant.event:
                 event: esphome.remote_button_pressed
                 data: {button: "channel_up", type: "repeat"}
-            - delay: 120ms # Adjust the delay for desired repeat speed
+            - delay: 150ms # Adjust the delay for desired repeat speed
 
 
   - platform: gpio
@@ -415,7 +415,7 @@ binary_sensor:
             - homeassistant.event:
                 event: esphome.remote_button_pressed
                 data: {button: "channel_down", type: "repeat"}
-            - delay: 120ms # Adjust the delay for desired repeat speed
+            - delay: 150ms # Adjust the delay for desired repeat speed
             
   - platform: gpio
     pin:
