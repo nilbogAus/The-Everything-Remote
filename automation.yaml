@@ -143,6 +143,67 @@ actions:
         alias: Shortcut 2 (Apple TV)
       - conditions:
           - condition: template
+            value_template: "{{trigger.event.data.button == 'shortcut_3'}}"
+        sequence:
+          - parallel:
+              - alias: LG TV Sequence
+                sequence:
+                  - action: media_player.turn_on
+                    metadata: {}
+                    data: {}
+                    target:
+                      device_id:
+                        - 6461dcd2ff85cf0f93ae192920898f19
+                  - repeat:
+                      until:
+                        - condition: device
+                          device_id: 6461dcd2ff85cf0f93ae192920898f19
+                          domain: media_player
+                          entity_id: 6ef4a66615cc7074b3c30608919091e7
+                          type: is_on
+                      sequence:
+                        - delay:
+                            hours: 0
+                            minutes: 0
+                            seconds: 1
+                            milliseconds: 0
+                  - action: media_player.select_source
+                    metadata: {}
+                    data:
+                      source: Screen Share
+                    target:
+                      device_id: 6461dcd2ff85cf0f93ae192920898f19
+              - alias: Apple TV Sequence
+                sequence:
+                  - action: media_player.turn_off
+                    metadata: {}
+                    data: {}
+                    target:
+                      device_id: 466b9f450c887ef74d15d09ed3ffe1b3
+                enabled: true
+              - alias: Amp  Sequence
+                sequence:
+                  - action: media_player.turn_on
+                    metadata: {}
+                    data: {}
+                    target:
+                      device_id:
+                        - 13f405bca5e64a54d1df697bf80e2163
+                  - action: media_player.select_source
+                    metadata: {}
+                    data:
+                      source: TV
+                    target:
+                      device_id: 13f405bca5e64a54d1df697bf80e2163
+                  - action: media_player.select_sound_mode
+                    metadata: {}
+                    data:
+                      sound_mode: surr_decoder
+                    target:
+                      device_id: 13f405bca5e64a54d1df697bf80e2163
+        alias: Shortcut 3 (Screen Share)
+      - conditions:
+          - condition: template
             value_template: "{{trigger.event.data.button == 'shortcut_4'}}"
         sequence:
           - parallel:
@@ -204,7 +265,7 @@ actions:
         alias: Shortcut 4 (Switch)
       - conditions:
           - condition: template
-            value_template: "{{trigger.event.data.button == 'shortcut_6'}}"
+            value_template: "{{trigger.event.data.button == 'shortcut_5'}}"
         sequence:
           - parallel:
               - alias: LG TV Sequence
@@ -236,6 +297,91 @@ actions:
                       device_id: 6461dcd2ff85cf0f93ae192920898f19
               - alias: Apple TV Sequence
                 sequence:
+                  - action: remote.turn_on
+                    metadata: {}
+                    data: {}
+                    target:
+                      device_id: 466b9f450c887ef74d15d09ed3ffe1b3
+                  - delay:
+                      hours: 0
+                      minutes: 0
+                      seconds: 0
+                      milliseconds: 500
+                  - action: media_player.turn_on
+                    metadata: {}
+                    data: {}
+                    target:
+                      device_id:
+                        - 466b9f450c887ef74d15d09ed3ffe1b3
+                  - action: remote.send_command
+                    metadata: {}
+                    data:
+                      num_repeats: 1
+                      delay_secs: 0.4
+                      hold_secs: 0
+                      command: home
+                    target:
+                      device_id: 466b9f450c887ef74d15d09ed3ffe1b3
+                enabled: true
+              - alias: Amp  Sequence
+                sequence:
+                  - action: media_player.turn_on
+                    metadata: {}
+                    data: {}
+                    target:
+                      device_id:
+                        - 13f405bca5e64a54d1df697bf80e2163
+                  - action: media_player.select_source
+                    metadata: {}
+                    data:
+                      source: Apple TV
+                    target:
+                      device_id: 13f405bca5e64a54d1df697bf80e2163
+                  - action: media_player.select_sound_mode
+                    metadata: {}
+                    data:
+                      sound_mode: straight
+                    target:
+                      device_id: 13f405bca5e64a54d1df697bf80e2163
+              - type: turn_off
+                device_id: 818e148e4d0215c94aed14e15dbd78ee
+                entity_id: 71922eaa9404c666e020deaf3370ec32
+                domain: switch
+        alias: Shortcut 5 (Apple TV - Movie)
+      - conditions:
+          - condition: template
+            value_template: "{{trigger.event.data.button == 'shortcut_6'}}"
+        sequence:
+          - parallel:
+              - alias: LG TV Sequence
+                sequence:
+                  - action: media_player.turn_on
+                    metadata: {}
+                    data: {}
+                    target:
+                      device_id:
+                        - 6461dcd2ff85cf0f93ae192920898f19
+                  - repeat:
+                      until:
+                        - condition: device
+                          device_id: 6461dcd2ff85cf0f93ae192920898f19
+                          domain: media_player
+                          entity_id: 6ef4a66615cc7074b3c30608919091e7
+                          type: is_on
+                      sequence:
+                        - delay:
+                            hours: 0
+                            minutes: 0
+                            seconds: 1
+                            milliseconds: 0
+                  - action: media_player.select_source
+                    metadata: {}
+                    data:
+                      source: Live TV
+                    target:
+                      device_id: 6461dcd2ff85cf0f93ae192920898f19
+              - alias: Apple TV Sequence
+                sequence:
                   - action: media_player.turn_off
                     metadata: {}
                     data: {}
@@ -253,7 +399,7 @@ actions:
                   - action: media_player.select_source
                     metadata: {}
                     data:
-                      source: Apple TV
+                      source: TV
                     target:
                       device_id: 13f405bca5e64a54d1df697bf80e2163
                   - action: media_player.select_sound_mode
@@ -408,71 +554,136 @@ actions:
           - condition: template
             value_template: "{{trigger.event.data.button == 'left'}}"
         sequence:
-          - action: remote.send_command
-            metadata: {}
-            data:
-              num_repeats: 1
-              delay_secs: 0.4
-              hold_secs: 0
-              command: left
-            target:
-              device_id: 466b9f450c887ef74d15d09ed3ffe1b3
+          - choose:
+              - conditions:
+                  - condition: state
+                    entity_id: media_player.lounge_av_reciever
+                    attribute: source
+                    state: TV
+                sequence:
+                  - action: webostv.button
+                    metadata: {}
+                    data:
+                      entity_id: media_player.lg_webos_smart_tv
+                      button: LEFT
+            default:
+              - action: remote.send_command
+                metadata: {}
+                data:
+                  num_repeats: 1
+                  delay_secs: 0.4
+                  hold_secs: 0
+                  command: left
+                target:
+                  device_id: 466b9f450c887ef74d15d09ed3ffe1b3
         alias: Left
       - conditions:
           - condition: template
             value_template: "{{trigger.event.data.button == 'right'}}"
         sequence:
-          - action: remote.send_command
-            metadata: {}
-            data:
-              num_repeats: 1
-              delay_secs: 0.4
-              hold_secs: 0
-              command: right
-            target:
-              device_id: 466b9f450c887ef74d15d09ed3ffe1b3
+          - choose:
+              - conditions:
+                  - condition: state
+                    entity_id: media_player.lounge_av_reciever
+                    attribute: source
+                    state: TV
+                sequence:
+                  - action: webostv.button
+                    metadata: {}
+                    data:
+                      entity_id: media_player.lg_webos_smart_tv
+                      button: RIGHT
+            default:
+              - action: remote.send_command
+                metadata: {}
+                data:
+                  num_repeats: 1
+                  delay_secs: 0.4
+                  hold_secs: 0
+                  command: right
+                target:
+                  device_id: 466b9f450c887ef74d15d09ed3ffe1b3
         alias: Right
       - conditions:
           - condition: template
             value_template: "{{trigger.event.data.button == 'up'}}"
         sequence:
-          - action: remote.send_command
-            metadata: {}
-            data:
-              num_repeats: 1
-              delay_secs: 0.4
-              hold_secs: 0
-              command: up
-            target:
-              device_id: 466b9f450c887ef74d15d09ed3ffe1b3
+          - choose:
+              - conditions:
+                  - condition: state
+                    entity_id: media_player.lounge_av_reciever
+                    attribute: source
+                    state: TV
+                sequence:
+                  - action: webostv.button
+                    metadata: {}
+                    data:
+                      entity_id: media_player.lg_webos_smart_tv
+                      button: UP
+            default:
+              - action: remote.send_command
+                metadata: {}
+                data:
+                  num_repeats: 1
+                  delay_secs: 0.4
+                  hold_secs: 0
+                  command: up
+                target:
+                  device_id: 466b9f450c887ef74d15d09ed3ffe1b3
         alias: Up
       - conditions:
           - condition: template
             value_template: "{{trigger.event.data.button == 'down'}}"
         sequence:
-          - action: remote.send_command
-            metadata: {}
-            data:
-              num_repeats: 1
-              delay_secs: 0.4
-              hold_secs: 0
-              command: down
-            target:
-              device_id: 466b9f450c887ef74d15d09ed3ffe1b3
+          - choose:
+              - conditions:
+                  - condition: state
+                    entity_id: media_player.lounge_av_reciever
+                    attribute: source
+                    state: TV
+                sequence:
+                  - action: webostv.button
+                    metadata: {}
+                    data:
+                      entity_id: media_player.lg_webos_smart_tv
+                      button: DOWN
+            default:
+              - action: remote.send_command
+                metadata: {}
+                data:
+                  num_repeats: 1
+                  delay_secs: 0.4
+                  hold_secs: 0
+                  command: down
+                target:
+                  device_id: 466b9f450c887ef74d15d09ed3ffe1b3
         alias: Down
       - conditions:
           - condition: template
             value_template: "{{trigger.event.data.button == 'select_button'}}"
         sequence:
-          - action: remote.send_command
-            metadata: {}
-            data:
-              num_repeats: 1
-              delay_secs: 0.4
-              hold_secs: 0
-              command: select
-            target:
-              device_id: 466b9f450c887ef74d15d09ed3ffe1b3
+          - choose:
+              - conditions:
+                  - condition: state
+                    entity_id: media_player.lounge_av_reciever
+                    attribute: source
+                    state: TV
+                sequence:
+                  - action: webostv.button
+                    metadata: {}
+                    data:
+                      entity_id: media_player.lg_webos_smart_tv
+                      button: ENTER
+            default:
+              - action: remote.send_command
+                metadata: {}
+                data:
+                  num_repeats: 1
+                  delay_secs: 0.4
+                  hold_secs: 0
+                  command: select
+                target:
+                  device_id: 466b9f450c887ef74d15d09ed3ffe1b3
         alias: Select
       - conditions:
           - condition: template
@@ -523,15 +734,33 @@ actions:
           - condition: template
             value_template: "{{trigger.event.data.button == 'home'}}"
         sequence:
-          - action: remote.send_command
-            metadata: {}
-            data:
-              num_repeats: 1
-              delay_secs: 0.4
-              hold_secs: 0
-              command: home
-            target:
-              device_id: 466b9f450c887ef74d15d09ed3ffe1b3
+          - choose:
+              - conditions:
+                  - condition: state
+                    entity_id: media_player.lounge_av_reciever
+                    attribute: source
+                    state: TV
+                sequence:
+                  - action: webostv.button
+                    metadata: {}
+                    data:
+                      entity_id: media_player.lg_webos_smart_tv
+                      button: FREEVIEW
+                  - action: webostv.command
+                    metadata: {}
+                    data:
+                      entity_id: media_player.lg_webos_smart_tv
+                      command: tv/getChannelList
+            default:
+              - action: remote.send_command
+                metadata: {}
+                data:
+                  num_repeats: 1
+                  delay_secs: 0.4
+                  hold_secs: 0
+                  command: home
+                target:
+                  device_id: 466b9f450c887ef74d15d09ed3ffe1b3
         alias: home
       - conditions:
           - condition: template
@@ -561,29 +790,55 @@ actions:
           - condition: template
             value_template: "{{trigger.event.data.button == 'channel_up'}}"
         sequence:
-          - action: remote.send_command
-            metadata: {}
-            data:
-              num_repeats: 1
-              delay_secs: 0.4
-              hold_secs: 0
-              command: next
-            target:
-              device_id: 466b9f450c887ef74d15d09ed3ffe1b3
+          - choose:
+              - conditions:
+                  - condition: state
+                    entity_id: media_player.lounge_av_reciever
+                    attribute: source
+                    state: TV
+                sequence:
+                  - action: webostv.button
+                    metadata: {}
+                    data:
+                      entity_id: media_player.lg_webos_smart_tv
+                      button: CHANNELUP
+            default:
+              - action: remote.send_command
+                metadata: {}
+                data:
+                  num_repeats: 1
+                  delay_secs: 0.4
+                  hold_secs: 0
+                  command: next
+                target:
+                  device_id: 466b9f450c887ef74d15d09ed3ffe1b3
         alias: Channel Up
       - conditions:
           - condition: template
             value_template: "{{trigger.event.data.button == 'channel_down'}}"
         sequence:
-          - action: remote.send_command
-            metadata: {}
-            data:
-              num_repeats: 1
-              delay_secs: 0.4
-              hold_secs: 0
-              command: previous
-            target:
-              device_id: 466b9f450c887ef74d15d09ed3ffe1b3
+          - choose:
+              - conditions:
+                  - condition: state
+                    entity_id: media_player.lounge_av_reciever
+                    attribute: source
+                    state: TV
+                sequence:
+                  - action: webostv.button
+                    metadata: {}
+                    data:
+                      entity_id: media_player.lg_webos_smart_tv
+                      button: CHANNELDOWN
+            default:
+              - action: remote.send_command
+                metadata: {}
+                data:
+                  num_repeats: 1
+                  delay_secs: 0.4
+                  hold_secs: 0
+                  command: previous
+                target:
+                  device_id: 466b9f450c887ef74d15d09ed3ffe1b3
         alias: Channel Down
       - conditions:
           - condition: template
