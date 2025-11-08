@@ -689,15 +689,28 @@ actions:
           - condition: template
             value_template: "{{trigger.event.data.button == 'back'}}"
         sequence:
-          - action: remote.send_command
-            metadata: {}
-            data:
-              num_repeats: 1
-              delay_secs: 0.4
-              hold_secs: 0
-              command: menu
-            target:
-              device_id: 466b9f450c887ef74d15d09ed3ffe1b3
+          - choose:
+              - conditions:
+                  - condition: state
+                    entity_id: media_player.lounge_av_reciever
+                    attribute: source
+                    state: TV
+                sequence:
+                  - action: webostv.button
+                    metadata: {}
+                    data:
+                      entity_id: media_player.lg_webos_smart_tv
+                      button: BACK
+            default:
+              - action: remote.send_command
+                metadata: {}
+                data:
+                  num_repeats: 1
+                  delay_secs: 0.4
+                  hold_secs: 0
+                  command: menu
+                target:
+                  device_id: 466b9f450c887ef74d15d09ed3ffe1b3
         alias: Back
       - conditions:
           - condition: template
@@ -741,16 +754,12 @@ actions:
                     attribute: source
                     state: TV
                 sequence:
-                  - action: webostv.button
+                  - action: media_player.select_source
                     metadata: {}
                     data:
-                      entity_id: media_player.lg_webos_smart_tv
-                      button: FREEVIEW
-                  - action: webostv.command
-                    metadata: {}
-                    data:
-                      entity_id: media_player.lg_webos_smart_tv
-                      command: tv/getChannelList
+                      source: TV Guide
+                    target:
+                      device_id: 6461dcd2ff85cf0f93ae192920898f19
             default:
               - action: remote.send_command
                 metadata: {}
