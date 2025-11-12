@@ -3,7 +3,7 @@ binary_sensor:
     id: tv_power
     name: tv_power
     entity_id: media_player.lg_webos_smart_tv
-    internal: false
+    internal: true
     on_state_change: 
       then:
         - if:
@@ -19,7 +19,7 @@ text_sensor:
     id: amp_power
     name: amp_power
     entity_id: media_player.lounge_av_reciever
-    internal: false
+    internal: true
     on_value: 
       then:
         - if:

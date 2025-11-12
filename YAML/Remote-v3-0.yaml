@@ -473,7 +473,7 @@ binary_sensor:
       inverted: true
     name: "Shortcut 5"
     id: shortcut_5
-    internal: false 
+    internal: true 
     on_multi_click:
       - timing:
           - ON for at most 350ms
@@ -497,7 +497,7 @@ binary_sensor:
       inverted: true
     name: "Shortcut 6"
     id: shortcut_6
-    internal: false 
+    internal: true 
     on_multi_click:
       - timing:
           - ON for at most 350ms
