@@ -2,9 +2,9 @@
 # as of December 2025 still under active development. I will try to cleanup and document later but adding stuff I change here as I go as CC matters
 # The Everything Remote
 
-A simple universal remote designed for ESPHome - simple to assemble for beginners and experienced tinkerers alike! 
+For detail see TheStokPot's repository for more details 
 
-[![Video](https://img.youtube.com/vi/Pe_ozZkrRAw/maxresdefault.jpg)](https://www.youtube.com/watch?v=Pe_ozZkrRAw)
+
 
 > [!CAUTION]
 > Please ensure your chosen lithium cell is no thicker than 6mm. Thick cells could be punctured by the tactile button legs.
