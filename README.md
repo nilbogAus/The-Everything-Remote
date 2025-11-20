@@ -1,5 +1,5 @@
-# forked from TheStokPot's remote changed for what I need 
-# as of October 2025 still under active development. I will try to cleanup and document later but adding stuff I change here as I go as CC matters
+# forked from TheStokPot's remote with changes made for my needs need 
+# as of December 2025 still under active development. I will try to cleanup and document later but adding stuff I change here as I go as CC matters
 # The Everything Remote
 
 A simple universal remote designed for ESPHome - simple to assemble for beginners and experienced tinkerers alike! 
@@ -18,20 +18,18 @@ A simple universal remote designed for ESPHome - simple to assemble for beginner
 - Deep sleep support for ultra-low power usage
 - Easy to build
 - 3D printable, customisable enclosure
+- <b>Added LED to show if remote on</b>
+- <b>changed brightness to 2 more shortcuts</b>
 
 ---
 
 ## YAML
 
-[Looking for the YAML for your remote? Here you go!](https://github.com/TheStockPot/The-Everything-Remote/blob/main/ESPHome%20YAML%20-%20v2.1)
-
-
+In folder
 
 ## Hardware
 
-[Printable Files](https://www.printables.com/model/1281626-everything-remote-esp32-powered-universal-remote)
-
-[Bill of Materials](https://github.com/TheStockPot/TheEverythingRemote/blob/main/Bill%20Of%20Materials.md)
+in folde
 
 ---
 
