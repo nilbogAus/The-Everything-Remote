@@ -55,6 +55,7 @@ deep_sleep:
     number: GPIO0
     inverted: true
     allow_other_uses: true
+    ignore_strapping_warning : true
 
 interval: # backup power off shouldn't be needed
   - interval: 30min
@@ -88,6 +89,7 @@ binary_sensor:
         pullup: true
       inverted: true
       allow_other_uses: true
+      ignore_strapping_warning: true
     name: "Power"
     id: power
     internal: true
@@ -119,6 +121,7 @@ binary_sensor:
         input: true
         pullup: true
       inverted: true
+      ignore_strapping_warning: true
     name: "Back"
     id: back
     internal: true
@@ -167,6 +170,7 @@ binary_sensor:
         input: true
         pullup: true
       inverted: true
+      ignore_strapping_warning: true
     name: "Play Pause"
     id: play_pause
     internal: true
@@ -295,6 +299,7 @@ binary_sensor:
         input: true
         pullup: true
       inverted: true
+      ignore_strapping_warning: true
     name: "Volume Up"
     id: volume_up
     internal: true
@@ -359,6 +364,7 @@ binary_sensor:
         input: true
         pullup: true
       inverted: true
+      ignore_strapping_warning: true
     name: "Volume Down"
     id: volume_down
     internal: true
